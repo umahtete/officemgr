@@ -35,6 +35,8 @@ COPY --parents packages/plugins/sandbox-providers/./*/package.json packages/plug
 COPY packages/plugins/paperclip-plugin-fake-sandbox/package.json packages/plugins/paperclip-plugin-fake-sandbox/
 COPY patches/ patches/
 
+ENV NODE_OPTIONS="--dns-result-order=ipv4first"
+
 RUN pnpm install --frozen-lockfile
 
 FROM base AS build
