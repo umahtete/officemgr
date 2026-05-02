@@ -41,6 +41,7 @@ RUN pnpm install --frozen-lockfile
 
 FROM base AS build
 WORKDIR /app
+ENV NODE_OPTIONS="--dns-result-order=ipv4first"
 COPY --from=deps /app /app
 COPY . .
 RUN pnpm --filter @paperclipai/ui build
